@@ -17,9 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::post('/newPost', 'HomeController@newPost')->name('newPost')->middleware('auth');
 
-Route::get('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@authenticate')->name('login');
-Route::get('/register', 'Auth\RegisterController@register');
+Route::get('/register', 'Auth\RegisterController@register')->name('register');
 Route::post('/register', 'Auth\RegisterController@create')->name('register');
